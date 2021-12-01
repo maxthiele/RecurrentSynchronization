@@ -1,6 +1,6 @@
 # Recurrent Synchronization
 
-Code repository accompanying the publication: "*Asymmetric Adaptivity induces Recurrent Synchronizationin Complex Networks*".  
+Code repository accompanying the publication: "*Asymmetric Adaptivity induces Recurrent Synchronization in Complex Networks*".  
 This project contains the code to produce the data for figures 2-4 as well as the figures themselves. The directory ``` Simulation_data ``` only contains folders for the different figures. All data will be saved in the corresponding folders. All duration times mentioned in the following are based on an i7-950 machine.
 
 # Requirements
