@@ -205,7 +205,7 @@ elif sys.argv[1]=='chosen':
 
 #%% Simulation of the system and calculation of the order parameter and spikerates
 
-tmax=3000
+tmax=300000
 t=np.linspace(0,tmax,int(tmax/0.04)+1)
 k,spiketimes=RK4(y0,k0,tmax,0.04,1000)
 order=order_parameter(spiketimes,t)
