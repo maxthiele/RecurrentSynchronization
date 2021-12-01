@@ -186,21 +186,26 @@ def spike_rate_2_pop(spiketimes,interval):
 
 #%% Initial conditions
 
-y0=np.empty(0)
-for i  in range(N):
-    V01=np.random.uniform(-70,20)
-    m01=alpha_m(V01)/(alpha_m(V01)+beta_m(V01))
-    h01=alpha_h(V01)/(alpha_h(V01)+beta_h(V01))
-    n01=alpha_n(V01)/(alpha_n(V01)+beta_n(V01))
-    s01=0.0
-    y0=np.append(y0,np.array([V01,m01,h01,n01,s01,]))
-
-k0=np.zeros((N,N))+np.random.uniform(0.0,0.5,(N,N))
-k0=k0-np.diag(np.diag(k0))
+if sys.argv[1]=='random':    
+    y0=np.empty(0)
+    for i  in range(N):
+        V01=np.random.uniform(-70,20)
+        m01=alpha_m(V01)/(alpha_m(V01)+beta_m(V01))
+        h01=alpha_h(V01)/(alpha_h(V01)+beta_h(V01))
+        n01=alpha_n(V01)/(alpha_n(V01)+beta_n(V01))
+        s01=0.0
+        y0=np.append(y0,np.array([V01,m01,h01,n01,s01,]))
+    
+    k0=np.zeros((N,N))+np.random.uniform(0.0,0.5,(N,N))
+    k0=k0-np.diag(np.diag(k0))
+    
+elif sys.argv[1]=='chosen':
+    k0=np.load(r'fig_2_IC_k.npy')
+    y0=np.load(r'fig_2_IC_y.npy')
 
 #%% Simulation of the system and calculation of the order parameter and spikerates
 
-tmax=300000
+tmax=3000
 t=np.linspace(0,tmax,int(tmax/0.04)+1)
 k,spiketimes=RK4(y0,k0,tmax,0.04,1000)
 order=order_parameter(spiketimes,t)
