@@ -9,7 +9,7 @@ The required packages are listed in ``` requirements.txt ```. To install these e
 
 ## Figure 2
 
-To obtain the data used in Figure 2 execute ``` python fig_2_data.py chosen ```. To start with random initial conditions execute ``` python fig_s_data.py random ```. The panels c-g of Figure 2 can be created using ``` python fig_2_plot.py``` afterwards.
+To obtain the data used in Figure 2 execute ``` python fig_2_data.py chosen ```. To start with random initial conditions execute ``` python fig_2_data.py random ```. The panels c-g of Figure 2 can be created using ``` python fig_2_plot.py``` afterwards.
 
 ## Figure 3
 
