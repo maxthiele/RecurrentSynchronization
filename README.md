@@ -3,7 +3,7 @@
 Code repository accompanying the publication: "*Asymmetric Adaptivity induces Recurrent Synchronization in Complex Networks*".  
 This project contains the code to produce the data for figures 2-4 as well as the figures themselves. The directory ``` Simulation_data ``` only contains folders for the different figures with the data beingh saved in the corresponding folders. All duration times mentioned in the following are based on an i7-950 machine.
 
-# Requirements
+## Requirements
 
 The required packages are listed in ``` requirements.txt ```. To install these execute ``` pip install -r requirements.txt ```.
 
