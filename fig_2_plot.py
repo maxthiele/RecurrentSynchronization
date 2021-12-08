@@ -32,6 +32,7 @@ spikerate2=np.load(r'Simulation_data/Figure_2/spikerate_pop_2.npy')
 t_int=np.load(r'Simulation_data/Figure_2/t_int.npy')
 
 
+
 #%%
 t_anf_whole=000000
 t_end_whole=300000
@@ -121,8 +122,8 @@ ax2.tick_params(labelsize=25)
 ax2.text(0.02,0.8,'\\bf{f}',transform=ax2.transAxes, fontsize=50,bbox=dict(facecolor='white',edgecolor='none'))
 
 ax3 = plt.subplot2grid((3,2), (2, 1), colspan=1, rowspan=1)
-t_anf_asynch=220000
-t_end_asynch=220100
+t_anf_asynch=230000
+t_end_asynch=230100
 index=np.arange(N)+1
 for i in range(N):
     temp=spiketimes[i,:]
@@ -147,4 +148,4 @@ ax3.text(0.02,0.83,'\\bf{g}',transform=ax3.transAxes, fontsize=50,bbox=dict(face
 
 fig.tight_layout()
 
-#fig.savefig('fig HHN network python firing density.svg',dpi=300)
+fig.savefig('fig HHN network python firing density.svg',dpi=300)

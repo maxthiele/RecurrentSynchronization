@@ -27,7 +27,7 @@ n1=100
 n2=100
 N=n1+n2
 
-I=np.append(np.ones(n1)*I1,np.ones(n2)*I2)+np.random.uniform(-0.01,0.01,N)
+
 
 
 #%% Parameter Adaptation functions
@@ -81,9 +81,7 @@ def plas_func1(t):
 
 @njit
 def plas_func2(t):
-    if t==0:
-        val=0
-    elif t>0: 
+    if t>=0: 
         val=((cp)*np.exp(-np.abs(t)/(tau_p))-cd*np.exp(-np.abs(t)/tau_d)+1/30)
     else: 
         val=((cp)*np.exp(-np.abs(t)/(tau_p))-cd*np.exp(-np.abs(t)/tau_d)+1/30)
@@ -130,13 +128,13 @@ def RK4(y0,k0,tmax,deltaT,chunksize):
                     for l in range(N):
                         if j<n1:
                             k[j,l]=k[j,l]+delta*plas_func1(t[i]-N_spikes[l])
-                            if l<n1+1:
+                            if l<n1:
                                 k[l,j]=k[l,j]+delta*plas_func1(-(t[i]-N_spikes[l]))
                             else:
                                 k[l,j]=k[l,j]+delta*plas_func2(-(t[i]-N_spikes[l]))
                         else:
                             k[j,l]=k[j,l]+delta*plas_func2(t[i]-N_spikes[l])
-                            if l<n1+1:
+                            if l<n1:
                                 k[l,j]=k[l,j]+delta*plas_func1(-(t[i]-N_spikes[l]))
                             else:
                                 k[l,j]=k[l,j]+delta*plas_func2(-(t[i]-N_spikes[l]))
@@ -144,6 +142,7 @@ def RK4(y0,k0,tmax,deltaT,chunksize):
                     k[:,j][k[:,j]>1.5]=1.5
                     k[j,:][k[j,:]<0]=0 
                     k[:,j][k[:,j]<0]=0
+                    k[j,j]=0
                     temp=spiketimes[j,:]
                     temp=temp[~np.isnan(temp)]
                     temp=np.append(temp,t[i])
@@ -198,10 +197,12 @@ if sys.argv[1]=='random':
     
     k0=np.zeros((N,N))+np.random.uniform(0.0,0.5,(N,N))
     k0=k0-np.diag(np.diag(k0))
+    I=np.append(np.ones(n1)*I1,np.ones(n2)*I2)+np.random.uniform(-0.01,0.01,N)
     
 elif sys.argv[1]=='chosen':
     k0=np.load(r'fig_2_IC_k.npy')
     y0=np.load(r'fig_2_IC_y.npy')
+    I=np.load(r'fig_2_I.npy')
 
 #%% Simulation of the system and calculation of the order parameter and spikerates
 
@@ -222,6 +223,8 @@ np.save(r'Simulation_data/Figure_2/spikerate',spikerate)
 np.save(r'Simulation_data/Figure_2/spikerate_pop_1',spikerate1)
 np.save(r'Simulation_data/Figure_2/spikerate_pop_2',spikerate2)
 np.save(r'Simulation_data/Figure_2/t_int',t_int)
+np.save(r'Simulation_data/Figure_2/y0',y0)
+np.save(r'Simulation_data/Figure_2/k0',k0)
 
 
 
