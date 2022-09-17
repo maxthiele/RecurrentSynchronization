@@ -13,7 +13,7 @@ To obtain the data used in Figure 6 execute ``` python fig_2_data.py chosen ```.
 
 ## Figure 6
 
-To obtain the grid used to produce the reduced flow in panel d execute ``` python fig_6_static_grid_main.py``` (**SLOW!** Multiple days.). The data for the bifurcation diagram in panel e can be produced using ``` python fig_6_bif_diagram_data_main.py ``` (**SLOW!** 18 hrs.). To obtain the time series data used in Figure 3 execute ``` python fig_6_data.py ```. Figure 6 can be created using ``` python fig_6_plot.py``` afterwards.
+To obtain the grid used to produce the reduced flow in panel d execute ``` python fig_6_static_grid_main.py``` (**SLOW!** Multiple days.). The data for the bifurcation diagram in panel e can be produced using ``` python fig_6_bif_diagram_data_main.py ``` (**SLOW!** 18 hrs.). To obtain the time series data used in Figure 6 execute ``` python fig_6_data.py ```. Figure 6 can be created using ``` python fig_6_plot.py``` afterwards.
 
 ## Figure 8
 
